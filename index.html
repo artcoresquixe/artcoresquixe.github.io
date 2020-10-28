@@ -6,12 +6,19 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script>
 
+
+    function tiraToast(){
+    	M.Toast.dismissAll();
+    }
+
     function qtdNaLinha( tm,  tal, taa, dist) {
      var result = parseInt(tm.value/(tal.value+dist)); 
      var resultalt = parseInt(tm.value/(taa.value+dist));
      qtdFinal(result, resultalt);
  }
  function qtdFinal(qtdCol, qtdLin){
+ 	tiraToast();
+
      var result = qtdLin * qtdCol;
      var ht = '<span>Vem '+result+' no metro.</span>';
      M.toast({html: ht, displayLength: 8000, classes: 'rounded'});
@@ -47,6 +54,7 @@ function qtdFinal2(tamm, qtda, taml, tama){
  M.toast({html: ht2, displayLength: 8000, classes: 'rounded'});
 }
 function Enviar2() {
+	tiraToast();
     var tmaterial = document.getElementById("tamid2");
     var tadesivol = document.getElementById("tamanhol2");
     var tadesivoa = document.getElementById("tamanhoa2");
