@@ -1,131 +1,149 @@
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <meta charset="utf-8" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+	<meta charset="utf-8" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script>
 
+		function tiraToast(){
+			M.Toast.dismissAll();
+		}
 
-    function tiraToast(){
-    	M.Toast.dismissAll();
-    }
+		function qtdNaLinha( tm,  tal, taa, dist) {
+			var result = parseInt(tm.value/(tal.value+dist)); 
+			var resultalt = parseInt(tm.value/(taa.value+dist));
+			qtdFinal(result, resultalt);
+		}
+		function qtdFinal(qtdCol, qtdLin){
+			tiraToast();
 
-    function qtdNaLinha( tm,  tal, taa, dist) {
-     var result = parseInt(tm.value/(tal.value+dist)); 
-     var resultalt = parseInt(tm.value/(taa.value+dist));
-     qtdFinal(result, resultalt);
- }
- function qtdFinal(qtdCol, qtdLin){
- 	tiraToast();
+			var result = qtdLin * qtdCol;
+			var ht = '<span>Vem '+result+' no metro.</span>';
+			M.toast({html: ht, displayLength: 8000, classes: 'rounded'});
+		}
+		function Enviar() {
+			var tmaterial = document.getElementById("tamid");
+			var tal = document.getElementById("tamanholid");  
+			var taa = document.getElementById("tamanhoaid");  
+			if (tmaterial.value != "" && tal.value != "") {
+				qtdNaLinha(tmaterial, tal, taa, 0.5);
+			}
+		}
 
-     var result = qtdLin * qtdCol;
-     var ht = '<span>Vem '+result+' no metro.</span>';
-     M.toast({html: ht, displayLength: 8000, classes: 'rounded'});
- }
- function Enviar() {
-    var tmaterial = document.getElementById("tamid");
-    var tal = document.getElementById("tamanholid");  
-    var taa = document.getElementById("tamanhoaid");  
-    if (tmaterial.value != "" && tal.value != "") {
-        qtdNaLinha(tmaterial, tal, taa, 0.5);
-    }
-}
+		function qtdNaLinha2( tm,  ta, dist) {
+			var result = parseInt(tm/(ta+dist)); 
+			var ht = '<span>Cabe '+result+' na folha</span>'
+			M.toast({html: ht, displayLength: 8000, classes: 'rounded'});
+			return result;
+		}
+		function qtdFinal2(tamm, qtda, taml, tama){
+			var result = qtdNaLinha2(tamm.value, taml.value, 0.5);
+			var linhas = Math.ceil(qtda.value/result);
 
+			var ht1 = '<span>Total de '+linhas+' folhas ou </span>'
+			M.toast({html: ht1, displayLength: 8000, classes: 'rounded'});
 
+			var final = (linhas * (tama.value)+(0.5));
 
-
-function qtdNaLinha2( tm,  ta, dist) {
- var result = parseInt(tm/(ta+dist)); 
- var ht = '<span>Cabe '+result+' na folha</span>'
- M.toast({html: ht, displayLength: 8000, classes: 'rounded'});
- return result;
-}
-function qtdFinal2(tamm, qtda, taml, tama){
- var result = qtdNaLinha2(tamm.value, taml.value, 0.5);
- var linhas = Math.ceil(qtda.value/result);
-
- var ht1 = '<span>Total de '+linhas+' folhas ou </span>'
- M.toast({html: ht1, displayLength: 8000, classes: 'rounded'});
-
- var final = (linhas * (tama.value)+(0.5));
-
- var ht2 = '<span>Fica '+final+'cm</span>'
- M.toast({html: ht2, displayLength: 8000, classes: 'rounded'});
-}
-function Enviar2() {
-	tiraToast();
-    var tmaterial = document.getElementById("tamid2");
-    var tadesivol = document.getElementById("tamanhol2");
-    var tadesivoa = document.getElementById("tamanhoa2");
-    var qtd = document.getElementById("qtdid");
-    if (tmaterial.value != "" && tadesivol.value != "") {
-        qtdFinal2(tmaterial, qtd, tadesivol, tadesivoa);
-    }
-}
-</script> 
-<!-- CSS  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+			var ht2 = '<span>Fica '+final+'cm</span>'
+			M.toast({html: ht2, displayLength: 8000, classes: 'rounded'});
+		}
+		function Enviar2() {
+			tiraToast();
+			var tmaterial = document.getElementById("tamid2");
+			var tadesivol = document.getElementById("tamanhol2");
+			var tadesivoa = document.getElementById("tamanhoa2");
+			var qtd = document.getElementById("qtdid");
+			if (tmaterial.value != "" && tadesivol.value != "") {
+				qtdFinal2(tmaterial, qtd, tadesivol, tadesivoa);
+			}
+		}
+	</script> 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="section">
-            <div class="row" >
-                <div class="meu_form">
-                    <h4>Cálculo do Adesivo (Metro) </h4>
+	<nav>
+		<div class="nav-wrapper #0d47a1 blue darken-4">
+			<a style="padding-left: 50px;" class="brand-logo" href="*">
+				<img class=" brand-logo responsive-img" src="logo.png">
+			</a>
+		</div>
+	</nav>
 
-                    <div class="col s6">
-                        <label for="tamanho">Tamanho do Material</label> <br>
-                        <input type="number" id="tamid" placeholder="1000mm" required="required" name="tamanho" />
-                    </div>
-                    <div class="col s3">
-                      <label for="largura">Largura</label> 
-                      <input  type="number" id="tamanholid" placeholder="10cm" required="required" name="largura" /> 
-                  </div>
-                  <div class="col s3">
-                      <label style="padding-left: 20px;" for="altura">Altura</label> 
-                      <input type="number" id="tamanhoaid" placeholder="10cm" required="required" name="altura" /><br>
-                  </div>
-                  <button class="btn col s2 offset-s10 waves-effect waves-light" onclick="Enviar();" name="action">Calcular
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
-        </div>
-        <br>
-        <div class="row" >
-             <div class="meu_form2">
-              <h4>Cálculo do Adesivo (Quantidade = Metragem) </h4>
-              <div class="col s3">
-                  <label for="tamanho">Tam. do Material</label> <br>
-                  <input type="number" id="tamid2" placeholder="1000mm" required="required" name="tamanho" /><br>
-              </div>
-              <div class="col s3">
-                  <label  for="qtd">Qtd. Adesivos</label> <br>
-                  <input type="number" id="qtdid" placeholder="20und" required="required" name="qtd" />  <br>
-              </div>
-              <div class="col s3">
-                  <label for="tamanhol">Largura</label> 
-                  <input type="number" id="tamanhol2" placeholder="10cm" required="required" name="tamanhol" />
-              </div>
-              <div class="col s3">
-                  <label style="padding-left: 20px;" for="tamanhoa">Altura</label> 
-                  <input type="number" id="tamanhoa2" placeholder="10cm" required="required" name="tamanhoa" /><br>
-              </div>
-              <button class="btn col s2 offset-s10 waves-effect waves-light" onclick="Enviar2();" name="action">Calcular
-                <i class="material-icons right">send</i>
-            </button>
+	<div class="container">
+		<div class="section">
+			<div class="row" >
+				<div class="meu_form">
+					<h4>Cálculo do Adesivo (Metro) </h4>
 
-        </div>
-    </div>
+					<div class="col s6">
+						<label for="tamanho">Tamanho do Material</label> <br>
+						<input type="number" id="tamid" placeholder="1000mm" required="required" name="tamanho" />
+					</div>
+					<div class="col s3">
+						<label for="largura">Largura</label> 
+						<input  type="number" id="tamanholid" placeholder="10cm" required="required" name="largura" /> 
+					</div>
+					<div class="col s3">
+						<label style="padding-left: 20px;" for="altura">Altura</label> 
+						<input type="number" id="tamanhoaid" placeholder="10cm" required="required" name="altura" /><br>
+					</div>
+					<button class="btn col s2 offset-s10 waves-effect #0d47a1 blue darken-4" onclick="Enviar();" name="action">Calcular
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</div>
+			<br>
+			<div class="row" >
+				<div class="meu_form2">
+					<h4>Cálculo do Adesivo (Quantidade = Metragem) </h4>
+					<div class="col s3">
+						<label for="tamanho">Tam. do Material</label> <br>
+						<input type="number" id="tamid2" placeholder="1000mm" required="required" name="tamanho" /><br>
+					</div>
+					<div class="col s3">
+						<label  for="qtd">Qtd. Adesivos</label> <br>
+						<input type="number" id="qtdid" placeholder="20und" required="required" name="qtd" />  <br>
+					</div>
+					<div class="col s3">
+						<label for="tamanhol">Largura</label> 
+						<input type="number" id="tamanhol2" placeholder="10cm" required="required" name="tamanhol" />
+					</div>
+					<div class="col s3">
+						<label style="padding-left: 20px;" for="tamanhoa">Altura</label> 
+						<input type="number" id="tamanhoa2" placeholder="10cm" required="required" name="tamanhoa" /><br>
+					</div>
+					<button class="btn col s2 offset-s10 waves-effect #0d47a1 blue darken-4" onclick="Enviar2();" name="action">Calcular
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-</div>
-</div>
+	<footer class="page-footer #0d47a1 blue darken-4">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">ArtCores Quixeramobim</h5>
+				</div>
+				<div class="col l4 offset-l2 s12">
 
-
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				© 2020 Copyright Junior Fernandes (JuniimSI)
+			</div>
+		</div>
+	</footer>
+	<!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 </body>
 </html>
