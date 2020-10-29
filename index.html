@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+	<title>ArtCores - Calc</title>>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 	<meta charset="utf-8" />
@@ -27,7 +28,7 @@
 			var tal = document.getElementById("tamanholid");  
 			var taa = document.getElementById("tamanhoaid");  
 			if (tmaterial.value != "" && tal.value != "") {
-				qtdNaLinha(tmaterial, tal, taa, 0.5);
+				qtdNaLinha(tmaterial, tal, taa, 2);
 			}
 		}
 
@@ -38,13 +39,13 @@
 			return result;
 		}
 		function qtdFinal2(tamm, qtda, taml, tama){
-			var result = qtdNaLinha2(tamm.value, taml.value, 0.5);
+			var result = qtdNaLinha2(tamm.value, taml.value, 2);
 			var linhas = Math.ceil(qtda.value/result);
 
 			var ht1 = '<span>Total de '+linhas+' folhas ou </span>'
 			M.toast({html: ht1, displayLength: 8000, classes: 'rounded'});
 
-			var final = (linhas * (tama.value)+(0.5));
+			var final = (linhas * (tama.value)+(2));
 
 			var ht2 = '<span>Fica '+final+'cm</span>'
 			M.toast({html: ht2, displayLength: 8000, classes: 'rounded'});
