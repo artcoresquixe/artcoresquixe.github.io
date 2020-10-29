@@ -1,12 +1,9 @@
 <html lang="en">
 <head>
-	<title>Artcores - Calc</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 	<meta charset="utf-8" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="icon" type="imagem/png" href="logo.png" />
-	
 	<script>
 
 		function tiraToast(){
@@ -14,8 +11,8 @@
 		}
 
 		function qtdNaLinha( tm,  tal, taa, dist) {
-			var result = parseInt(tm.value/(tal.value+dist)); 
-			var resultalt = parseInt(tm.value/(taa.value+dist));
+			var result = Math.floor(tm.value/(tal.value+dist)); 
+			var resultalt = Math.floor(tm.value/(taa.value+dist));
 			qtdFinal(result, resultalt);
 		}
 		function qtdFinal(qtdCol, qtdLin){
@@ -35,7 +32,7 @@
 		}
 
 		function qtdNaLinha2( tm,  ta, dist) {
-			var result = parseInt(tm/(ta+dist)); 
+			var result = Math.floor(tm/(ta+dist)); 
 			var ht = '<span>Cabe '+result+' na folha</span>'
 			M.toast({html: ht, displayLength: 8000, classes: 'rounded'});
 			return result;
@@ -66,6 +63,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="icon" type="imagem/png" href="logo.png" />
 </head>
 
 <body>
